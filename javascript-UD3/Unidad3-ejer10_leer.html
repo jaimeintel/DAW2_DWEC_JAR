@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer 10 leer</title>
+</head>
+
+<body>
+    <h1>Bienvenido/a</h1>
+    <p id="info"></p>
+</body>
+    <script>
+        let nombre = localStorage.getItem('nombre');
+        let edad = localStorage.getItem('edad');
+
+        if (nombre && edad){
+            document.write (`Hola ${nombre}, tienes ${edad} años.<br>`)
+        }
+        else {
+        document.getElementById("info").innerHTML = `No se encontraron cookies. <a href="Unidad3-ejer10_crear.html">Regresa a la página anterior</a>`;
+    }
+
+    function borrarDatos() {
+        if (nombre && edad) {
+            // borra la local storage
+            //localStorage.clear(); //para borrar toda la local storage.  
+            localStorage.removeItem("nombre");
+            localStorage.removeItem("edad");
+            window.location.reload()
+        }
+        else {
+            document.getElementById("info").innerHTML = `No se encontraron cookies. <a href="Unidad3-ejer10_crear.html">Regresa a la página anterior</a>`;
+        }
+    }
+    </script>
+    <br>
+    <form action="post">
+        <input type="button" value="Borrar datos" onclick="borrarDatos()">
+    </form>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+<!----3. (String) Crea un script que reciba una cadena de texto. El script comprueba si la
+cadena contiene la palabra “JavaScript” tal cual (se añadirán otras validaciones
+posteriormente).
+ Si no la contiene, devuelve un mensaje indicando que no la encontró.
+ Si encuentra la cadena, el usuario deberá adivinar en qué posición empieza
+esta cadena. Cada vez que el usuario falle, el script le dará pistas e indicará
+si la posición es mayor o menor hasta que acierte. Cuando acierte, el script
+mostrará el número de intentos realizados y el resto de la cadena después
+de la palabra “JavaScript”.-->
+
+    <script>
+
+        let str = prompt("Introduce una frase que contenga la palabra JavaScript")
+        /*let strRecortada = str.trim();
+        alert(strRecortada); */  
+        let target = 'JavaScript'
+        let contadorIntentos = 0
+        
+        let pos = (str.indexOf(target))
+        
+        posIn = +prompt("Introduzca la posicion en la que crees que está: ") 
+
+        while (pos != posIn){
+            if (pos > posIn){
+                alert("la posición es mayor que la indicada")
+                contadorIntentos++
+            }
+            if (pos < posIn){
+                alert("la posición es menor que la indicada")
+                contadorIntentos++
+            }
+            posIn = +prompt("Introduzca otra posición: ")
+
+        }
+        alert("Lo has adivinado")
+        alert("Numero de intentos: "+ contadorIntentos )
+
+
+    </script>
+</body>
+</html>

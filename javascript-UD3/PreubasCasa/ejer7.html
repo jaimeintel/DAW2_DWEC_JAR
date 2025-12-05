@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-----(Evento click básico) Modifica el ejercicio 5. El prompt se reemplaza 
+por etiquetas input. Se muestra un campo de texto para introducir nombre y apellidos y otro
+numérico con calificación de 0 a 10 (se validará que el número introducido es
+correcto). Además, se añade un botón que cada vez que se pulsa sobrescribe el
+texto de la página con la información introducida con las mismas especificaciones
+del ejercicio 5. Ahora el script se muestra en la etiqueta head y no se ejecuta hasta
+que no cargue el HTML.
+-->
+
+    <script>
+        window.onload = function () {
+            const boton = document.getElementById("evaluar");
+
+            //evento al hacer click en el boton 
+            boton.addEventListener("click", function () {
+
+                let nombre = document.getElementById("nombre").value.trim();
+                let notaInput = document.getElementById("nota").value.trim();
+                let nota = Number(notaInput);
+
+                // validar formato 
+                if (!nombre) {
+                    alert("Por favor introduzca su nombre");
+                    return;
+                }
+                if (!nota || isNaN(nota) || nota < 0 || nota > 10) {
+                    alert("Introduzca una nota válida.")
+                    return;
+                }
+
+                // Determinar calificación
+                let resultado = "";
+                if (nota < 5) {
+                    resultado = "SUSPENSO";
+                } else if (nota < 6) {
+                    resultado = "APROBADO";
+                } else if (nota < 7) {
+                    resultado = "BIEN";
+                } else if (nota < 9) {
+                    resultado = "NOTABLE";
+                } else {
+                    resultado = "SOBRESALIENTE";
+                }
+
+                // cambiar texto h2 con tag y textContent (mete solo texto, sin etiquetas!)
+                document.getElementsByTagName("h2")[0].textContent = `Nombre del alumno: ${nombre}`;
+                // cambiar parrafo con id e innerHtml (mete texto y etiquetas !!!!)
+                document.getElementById("notaFinal").innerHTML = `<strong>Nota: ${nota} </strong>`;
+                //queryselector y textContent
+                document.querySelector(".mensaje").textContent = `resultado : ${resultado}`;
+            });
+        };
+
+    </script>
+
+    <!--- Se pide nombre y apellidos -->
+    <label for="nombre">Nombre y apellidos</label>
+    <input type="text" name="nombre" id="nombre">
+
+    <!--- Se pide nota -->
+    <label for="nota">Nota (0 a 10):</label>
+    <input type="number" id="nota" min="0" max="10">
+
+    <!---- Boton con id evaluar -->
+    <button id="evaluar">Evaluar</button>
+
+    <!--etiquetas a modificar. a modificar-->
+    <h2>Nombre del alumno: </h2>
+    <p id="notaFinal">Resultado de la evaluación: </p>
+    <div class="mensaje"></div>
+
+
+</body>
+
+</html>

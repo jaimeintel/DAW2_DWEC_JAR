@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            const boton = document.getElementById("calcular");
+
+            //evento al hacer click en el boton 
+            boton.addEventListener("click", function () {
+
+                let fecha = document.getElementById("fecha").value.trim();
+                console.log(fecha);
+
+                // validar que cadena tiene al menos dos guiones
+
+                let primerGuion = fecha.indexOf('-'); // Devuelve 4 (posición del primer guion)
+                let segundoGuion = fecha.indexOf('-', primerGuion + 1); // Devuelve 5 (posición del segundo guion)
+
+                if (primerGuion != 2 || segundoGuion != 5) {
+                    alert("Error, la fecha debe contener guiones (-) y formato DD-MM-AAAA");
+
+                } else { // 2 guiones y bien colocados
+
+                    // Partes extraídas como string:
+                    let diaString = fecha.slice(0, primerGuion);
+                    let mesString = fecha.slice(primerGuion + 1, segundoGuion); 
+                    let anioString = fecha.slice(segundoGuion + 1);
+
+                    if (isNaN(diaString) || isNaN(mesString) || isNaN(anioString)){
+                        alert("Error: Dia, mes y año deben ser valores numéricos");
+                    }
+                    else{
+                        let fechaFormateada = `${mesString}-${diaString}-${anioString}`; // aqui pasamos la fecha a formato que pueda leer Date
+
+                        let fechaNacimiento = new Date(fechaFormateada); 
+                        let fechaActual = Date.now(); // fecha de hoy 
+
+                        if (fechaActual < fechaNacimiento){
+                            alert("Error: La fecha introducida es posterior a la actual.")
+                        }
+                        let diferenciaMs = fechaActual - fechaNacimiento; // restamos para saber tiempo de vida  
+
+                        // redondemoas con math floor sin decimales por abajo (truncado), toFixed para 2 decimales y Math.ceil para redondear por arriba. 
+                        aniosRedondeo = Math.floor(diferenciaMs / (60 * 60 * 24 * 1000 * 365)); // años redondeaods
+                        aniosDecimales = (diferenciaMs / (60 * 60 * 24 * 1000 * 365)).toFixed(2); // años redondeados 2 decimales
+                        aniosProx =  Math.ceil(diferenciaMs / (60 * 60 * 24 * 1000 * 365)); // años cumplidos el año que viene
+                        
+                        alert(`Edad calculada: 
+                        - Edad con decimales: ${aniosDecimales}
+                        - Edad actual: ${aniosRedondeo}
+                        - Edad el proximo año: ${aniosProx} `);
+                    
+                    
+                    }
+                }
+            });
+        };
+    </script>
+</head>
+<body>
+
+    <!--- Se pide fecha en string -->
+    <input type="text" id="fecha" placeholder="DD-MM-AAAA">
+    <!---- Boton calcular Edad -->
+    <button id="calcular">Calcular Edad</button>
+
+</body>
+
+</html>

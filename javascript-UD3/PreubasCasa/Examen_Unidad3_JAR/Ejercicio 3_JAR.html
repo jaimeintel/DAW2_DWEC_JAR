@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #info {
+            color: #ff0000;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            document.getElementById("enviar").addEventListener("click", function (e) {
+                let domicilio = document.getElementById("domicilio").value.trim();
+                let numero = document.getElementById("numero").value.trim();
+                let observaciones = document.getElementById("observaciones").value.trim();
+
+                if (domicilio || numero || observaciones) { // en caso de que alguno sea true, se sigue 
+                    let datos = []; // array de datos y si existten se introducen.
+                    if (domicilio) {
+                        datos += domicilio;
+                    }
+                    if (numero) {
+                        datos += numero;
+                    }
+                    if (observaciones) {
+                        datos += observaciones;
+                    }
+
+
+                    //abrimos ventana emergente 
+                    const popup = window.open("Ejercicio 3_ventana.JAR.html", "ventana", "width=400,height=300");
+
+                    // leemos el array 
+
+                    for (let dato of datos) {
+                        popup.addEventListener("DOMContentLoaded", () => {
+                            popup.document.body.innerHTML = `<h2>Datos de dirección: </h2><p>${datos}</p>`; // no consigo sacar el bucle por eso muestro el array completo. 
+                        });
+                    }
+
+
+                }
+                else {
+                    const info = document.getElementById("info");
+                    info.innerHTML = "Error: debes introducir al menos un campo de la dirección.";
+
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <h2>Introduce tu dirección</h2>
+    <input type="text" id="domicilio" placeholder="Domicilio"><br><br>
+    <input type="text" id="numero" placeholder="Número y piso"><br><br>
+    <input type="text" id="observaciones" placeholder="Observaciones"><br><br>
+
+    <button id="enviar">Enviar dirección</button>
+    <p id="info"></p>
+</body>
+
+</html>

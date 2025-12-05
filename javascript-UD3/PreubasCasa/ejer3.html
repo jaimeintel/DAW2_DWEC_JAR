@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let frase = prompt("Escribe una frase que contenga la palabra JavaScript");
+        frase = frase.trim().toLocaleLowerCase();
+        let posicion = frase.indexOf('javascript');
+        if (posicion == -1){
+            alert("No se encontró la palabra JavaScript!")
+        }
+        else{
+            let posicionAdivinar = prompt("Escribe la posicion en la que crees que está");
+            while (posicion != posicionAdivinar){
+                if (posicion < posicionAdivinar){
+                    posicionAdivinar = prompt("La posición es menor, prueba otra vez");
+                }
+                if(posicion > posicionAdivinar){
+                    posicionAdivinar = prompt("La posición es mayor, prueba otra vez");
+                }
+
+            }
+            alert(`Has acertado !! la posición era efectivamente : ${posicion} `);
+        }   
+    </script>
+</body>
+</html>

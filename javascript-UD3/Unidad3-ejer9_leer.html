@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bienvenido/a</h1>
+    <p id="info"></p>
+    <form action="post">
+        <input type="button" value="Borrar las Cookies" onclick="borrarCookies()">
+    </form>
+
+</body>
+<script>
+    // funcion para buscar en las cookies
+    function getCookie(name) {
+        let matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    }
+    // la llamamos por el key que le pusimos a cada una. 
+    let nombre = getCookie("nombre");
+    let edad = getCookie("edad")
+    // si existen las cookies las muestra
+    if (nombre && edad) {
+        document.write(`<p>Hola, ${nombre}, tienes ${edad} años</p>`);
+    } else {
+        document.getElementById("info").innerHTML = `No se encontraron cookies. <a href="Unidad3-ejer9_crear.html">Regresa a la página anterior</a>`;
+    }
+
+    function borrarCookies() {
+        if (nombre && edad) {
+            // borra la cookie (la hacemos expirar ya)
+            document.cookie = `nombre=${nombre}; max-age=0`;
+            document.cookie = `edad=${edad}; max-age=0`;
+            window.location.reload()
+        }
+        else {
+            document.getElementById("info").innerHTML = `No se encontraron cookies. <a href="Unidad3-ejer9_crear.html">Regresa a la página anterior</a>`;
+        }
+    }
+
+</script>
+
+</html>

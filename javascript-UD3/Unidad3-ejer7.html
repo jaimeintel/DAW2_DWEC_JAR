@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <h2>Nombre del alumno: </h2>
+    <p id="notaFinal">Resultado de la evaluación</p>
+    <div class="mensaje"></div>
+
+    <label for="nombre">Nombre Completo: </label>
+    <input type="text" name="nombre" id="nombre">
+    <br>
+    <label for="nota">Nota del curso: </label>
+    <input type="number" name="nota" id="nota">
+    <br>
+    <br>
+    <input type="button" value="Modificar Valores" onclick="funcionActualizar()">
+
+</body>
+<script>
+    function funcionActualizar() {
+
+        
+        let nombre = document.getElementById("nombre").value;
+        // modificacion de h2 para añadir nombre 
+        let h2 = document.getElementsByTagName('h2')[0];
+        h2.innerHTML += nombre; //innerHTML modifica h2 al cual hemos accedido con getElements
+
+        let nota = document.getElementById("nota").value;
+         // validar la nota 
+        if (nota > 10 || nota < 0 || isNaN(nota)) {
+            alert("La nota introducida no es correcta")
+        }
+        else {
+            //parrafo con id = notaFinal
+            let p = document.getElementById('notaFinal');
+            p.innerHTML += ` <strong>Nota: ${nota}<strong>`;
+            // div se añade texto con SUSPENSO / APROBADO ...
+            if (nota < 5){
+                resultadoNota = "SUSPENSO";
+            }
+            if (nota >= 5 && nota < 6){
+                resultadoNota = "APROBADO";
+            }
+            if (nota >= 6 && nota <7 ){
+                resultadoNota = "BIEN";
+            }
+            if (nota >= 9 && nota <9 ){
+                resultadoNota = "NOTABLE";
+            }
+            if (nota >= 9 ){
+                resultadoNota = "SOBRESALIENTE";
+            }
+            
+            let div = document.getElementsByTagName('div')[0];
+            div.innerHTML = resultadoNota;
+        }
+
+
+
+        
+    }; 
+
+</script>
+</html>

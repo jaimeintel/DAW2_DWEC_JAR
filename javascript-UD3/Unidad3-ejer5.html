@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Nombre del alumno: </h2>
+    <p id="notaFinal">Resultado de la evaluación</p>
+    <div class="mensaje"></div>
+
+    <script>
+        let nombre = prompt("Escribe tu nombre y apellidos");
+        let nota = +prompt("Escribe una calificaión de 0 - 10");
+        // modificacion de h2 para añadir nombre 
+        let h2 = document.getElementsByTagName('h2')[0];
+        h2.innerHTML += nombre; //innerHTML modifica h2 al cual hemos accedido con getElements
+        // validar la nota 
+        if (nota > 10 || nota < 0 || isNaN(nota)) {
+            alert("La nota introducida no es correcta")
+        }
+        else {
+            //parrafo con id = notaFinal
+            let p = document.getElementById('notaFinal');
+            p.innerHTML += ` <strong>Nota: ${nota}<strong>`;
+            // div se añade texto con SUSPENSO / APROBADO ...
+            if (nota < 5){
+                resultadoNota = "SUSPENSO";
+            }
+            if (nota >= 5 && nota < 6){
+                resultadoNota = "APROBADO";
+            }
+            if (nota >= 6 && nota <7 ){
+                resultadoNota = "BIEN";
+            }
+            if (nota >= 9 && nota <9 ){
+                resultadoNota = "NOTABLE";
+            }
+            if (nota >= 9 ){
+                resultadoNota = "SOBRESALIENTE";
+            }
+            
+            let div = document.getElementsByTagName('div')[0];
+            div.innerHTML = resultadoNota;
+        }
+
+    </script>
+
+</body>
+
+</html>

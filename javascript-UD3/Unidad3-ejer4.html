@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer 4</title>
+</head>
+<body>
+    <!--4. (Arrays y Date) Crea un script que reciba tantas cadenas de texto con fechas como
+    el usuario desee (al menos una). Por cada fecha se mostrará un confirm para que el
+    usuario pueda seguir introduciendo fechas hasta que quiera. El formato es flexible y
+    puedes añadir el día, mes, año, hora o minuto siempre que sea válido cuando se
+    realice la conversión en JavaScript. Inicialmente se almacenan un array los String
+    con la entrada del usuario y se recorrerá y por cada cadena se hará lo siguiente:
+     Validar el formato de la fecha. Si no es válido se mostrará un error. En caso
+    de que el formato sea válido, se convierte a Date y se mostrará por consola
+    la siguiente información por cada fecha:-->
+
+    <script>
+        let fechasIn = [];
+        let nuevaFecha = true
+        let fechaTexto = prompt("Introduce una fecha en formato 2025-01-26")
+        let fecha = new Date (fechaTexto);
+        fechasIn.push(fecha); 
+
+        //diferencia entre fecha actual y la introducida : 
+        /*let now = new Date();
+        let diff = fecha - now; */
+
+        while(nuevaFecha){
+            nuevaFecha = confirm("Quieres introducir una nueva fecha?");
+            if (nuevaFecha){
+                fechaTexto = prompt("Introduce una fecha en formato 2025-01-26")
+                let fecha2 = new Date (fechaTexto);
+                fechasIn.push(fecha2); 
+            }
+        }
+        
+        document.write(fechasIn);
+
+        
+    </script>
+    
+</body>
+</html>

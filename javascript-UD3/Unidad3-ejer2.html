@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 unidad 3 </title>
+</head>
+<body>
+    <!---(Math y datos numéricos) Crea un script que 
+    simule el análisis de precios de
+    productos en una tienda. El usuario debe introducir:
+
+    a) Un precio base en euros (por prompt).
+    b) Un número con decimales para representar un porcentaje de descuento.
+    
+    Tu script debe:
+         Validar que los dos valores sean números válidos.
+         Convertir los valores a tipo numérico real.
+         Calcular el precio final aplicando el descuento.  (Este apartado se pedirá posteriormente)
+         Mostrar los errores o el resultado final con alert.  (Este apartado se pedirá posteriormente)
+    -->
+    <script>
+        let precioBaseIn = prompt("Escribe un precio base en euros: ");
+        let porcDescIn = prompt("Escribe el prcentaje de descuento (ej.: 30 -> 30%): ");
+
+        let precioBase = parseFloat(precioBaseIn);
+        let porcDesc = parseFloat(porcDescIn)
+
+        if (isNaN(precioBase) || isNaN(porcDesc) ){
+            alert("No es un numero valido");
+        }
+        else{
+            porcDesc = porcDesc/100;
+            let descuento = precioBase * porcDesc;
+            let precioFinal = precioBase - descuento;
+            alert("El precio final es: " + precioFinal.toFixed(2) +  " Euros");
+        }
+
+    </script>
+</body>
+</html>

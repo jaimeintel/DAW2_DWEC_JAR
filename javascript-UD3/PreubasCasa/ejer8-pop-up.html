@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Se recibe el mensaje cuando carga la página
+        document.addEventListener("DOMContentLoaded",  () => {
+
+            document.getElementById("cerrar").addEventListener("click", function() {
+                if (window.opener){
+                    window.opener.postMessage("Gracias por visitar la ventana emergente ! ", "*");
+                }
+                window.close;
+            })
+
+        });
+    </script>
+</head>
+
+<body>
+    <h2 id="saludo">Hola</h2>
+    <button id="cerrar">Cerrar y enviar mensaje</button>
+</body>
+
+</html>

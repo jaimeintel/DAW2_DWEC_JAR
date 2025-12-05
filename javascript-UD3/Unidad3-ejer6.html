@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .resaltado{
+        background-color: yellow;
+        font-weight: bold;
+        padding: 4px;
+    }
+</style>
+<body>
+    <h1 id="titulo">Nombre del alumno: </h1>
+    <p class="descripcion">Este es un texto de prueba</p>
+    <div class="contenedor">
+        <p class="resaltado">Este párrafo está dentro de un contenedor</p>
+    </div>
+
+    <script>
+        let nuevoColorH1 = prompt("Escribe un nuevo color para el texto");
+        let cambioAResaltado = confirm("Quieres resaltar el texto de la descripcion?: ");
+
+        let titulo = document.getElementById("titulo");
+        titulo.style.color = nuevoColorH1;
+        
+        let textoPrueba = document.querySelector('.descripcion'); // aqui accedemos a la clase descripcion y la guardamos en una variable. El punto se refiere a clase
+        let parrafoResaltado = document.querySelector('.resaltado');
+        
+        if (cambioAResaltado){
+           textoPrueba.className = "resaltado" ; // aqui intentando cambiar a la clase resaltado ... 
+           parrafoResaltado.className = ""; // aqui le quitamos la clase resaltado a el parrafo 
+        
+            let ocultarContenedor = confirm("Quieres ocultar el contenendor?");
+            if(ocultarContenedor){
+                //let contenedor = document.getElementsByTagName('div');
+                //let contenedor = document.querySelector('.contenedor');
+                //contenedor.remove; // no entiendo porque no borra el div entero... 
+                
+                // no es la mejor manera... 
+                let div = document.getElementsByTagName('div')[0];
+                div.innerHTML = "";
+                
+            }
+        }
+
+
+    </script>
+</body>
+
+
+
+</html>

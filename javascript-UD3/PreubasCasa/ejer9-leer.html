@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function () {
+            // leemos cookies con un nombre determinado 
+            function leerCookie(nombre) {
+                let matches = document.cookie.match(new RegExp(
+                    "(?:^|; )" + nombre.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+                ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+
+            // la llamamos por el key que pusimos en en cada una 
+
+            let nombre = leerCookie("nombre");
+            let edad = leerCookie("edad");
+
+            const info = document.getElementById("info");
+
+            // si existen se muestran 
+            if (nombre && edad) {
+                info.textContent = `Hola ${nombre}, tienes ${edad} años.`
+            }
+            else {
+                info.innerHTML = `No se encontraron cookies. <a href="ejer9-crear.html">Regresa a la página anterior.</a>`;
+            }
+
+            document.getElementById("borrar").addEventListener("click", function (e){
+                //borrar la cookie 
+                if(nombre & edad ){
+                    document.cookie = `nombre=${nombre}; max-age=0`;
+                    document.cookie = `edad=${edad}; max-age=0`;
+                    window.location.reload();
+                }
+                else {
+                document.getElementById("info").innerHTML = `No se encontraron cookies. <a href="ejer9-crear.html">Regresa a la página anterior</a>`;
+        }
+            })
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h2>Bienvenido/a</h2>
+    <div id="info"></div>
+
+    <button id="borrar">Borrar cookies</button>
+</body>
+
+</html>

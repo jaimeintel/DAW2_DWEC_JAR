@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numSec = Math.ceil(Math.random()*10);
+        let num = +prompt( numSec + " Se ha generado un numero aleatorio, escribe uno entre 1 - 10. ");
+        if (!Number.isFinite(num) || num < 0 || num > 10 ){
+                alert("Por favor, introduce un numero válido.")
+            }
+        while(numSec != num){
+            num = +prompt( numSec + " Vuelve a intentarlo");
+            if (!Number.isFinite(num) || num < 0 || num > 10 ){
+                alert("Por favor, introduce un numero válido.")
+            }
+        }
+        if (numSec == num){
+                alert(`Acertaste bb !! genial ! El numero era efectivamente: ${numSec}` )
+            }
+    </script>
+</body>
+</html>

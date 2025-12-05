@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .resaltado {
+            background-color: yellow;
+            font-weight: bold;
+            padding: 4px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="titulo">Bienvenido/a</h1>
+    <p class="descripcion">Este es un texto de prueba.</p>
+    <div class="contenedor">
+        <p class="resaltado">Este párrafo está dentro de un contenedor.</p>
+    </div>
+
+    <script>
+        colorH1 = prompt("Escribe un nuevo color para el título: ");
+        h1 = document.getElementById("titulo");
+
+        let resaltar = confirm("¿Quieres resaltar el texto de la descripción?");
+        if(resaltar){
+            let parrafo1 = document.querySelector(".descripcion");
+            let parrafo2 = document.querySelector(".resaltado");
+
+            parrafo1.classList.add("resaltado");
+            //parrafo.className = "resaltado" se puede asi también.
+            parrafo2.classList.remove("resaltado");
+            //parrafo.className = ""; tambien se puede hacer asi
+
+            let ocultarContenedor = confirm("Quieres ocultar el contenedor? ");
+            
+            if(ocultarContenedor){
+                let contenedor = document.querySelector(".contenedor");
+                contenedor.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

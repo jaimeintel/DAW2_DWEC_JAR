@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ejercicio 8</title>
+</head>
+
+<body>
+    <iframe src="" frameborder="1" width="300" height="150"></iframe>
+    <br>
+    <form id="form">
+        <input type="text" name="nombre" id="nombre">
+        <input type="submit" value="Escribe tu nombre" onclick="abrirVentana()">
+    </form>
+
+</body>
+
+
+<script>
+    let texto = document.getElementById("nombre");
+    let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
+    width=0,height=0,left=-1000,top=-1000`;
+
+    function abrirVentana() {
+        if (!texto.value) {
+            alert("Tiene que rellenar el campo nombre")
+        } else {
+
+
+            let newWindow = window.open("Unidad3-ejer8.1.html", "popup", params);
+            newWindow.document.write(`<h2>hola,${texto.value}<h2>`);
+
+            //newWindow.document.body.innerHTML += `<h2>hola,${texto.value}<h2>`;
+            //newWindow.onload = function() {
+            //let mensaje = `<div style="font-size:30px"><h1>hola,${texto.value}<h1></div>`
+            ///newWindow.document.body.insertAdjacentHTML(mensaje);
+            ///}
+        }
+        
+    }
+</script>
+
+
+</html>

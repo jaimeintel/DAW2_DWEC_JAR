@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 9 </title>
+</head>
+<body>
+    <!---- Crea una página crear_ejercicio9.html que pida el 
+    nombre de usuario y edad -->
+    <!----Al aceptar, si se han introducido todos los datos se guardan las cookies nombre y edad
+    con una duración de 5 minutos cada una. Además, se redirige con
+    window.location.href a otra página llamada leer_ejercicio9.html que muestra las
+    cookies tal y como se observa.-->
+
+    <h1>Introduce tus datos</h1>
+    <form method="post" action="Unidad3-ejer9_leer.html">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" name="nombre" id="nombre">
+        <br><br>
+        <label for="edad">Edad: </label>
+        <br>
+        <input type="number" name="edad" id="edad">
+        <br><br>
+        <input type="submit" value="Guardar y continuar" onclick="funcionEnviar()">
+    </form>
+    <script>
+        function funcionEnviar(){
+            event.preventDefault(); // detiene el envío del form
+            // recojemos los vaores del form
+            let nombre = document.getElementById("nombre").value;
+            let edad = document.getElementById("edad").value;
+            if (!nombre || !edad){
+                alert("Por favor, rellene todos los campos.")
+            }
+            else{
+            // definimos duracion de la cookie
+            let date = new Date(Date.now() + 300) // 300 segundos = 5 minutos
+            date = date.toUTCString();
+            // guardamos en las cookies los valores
+            document.cookie = encodeURIComponent("nombre") + "=" + encodeURIComponent(nombre) + ";expires=" + date;
+            document.cookie = encodeURIComponent("edad") + "=" + encodeURIComponent(edad) + ";expires="+  date;
+            // redirigimos a la otra pagina
+            window.location.href = "Unidad3-ejer9_leer.html";
+            }
+        }
+        
+    </script>
+
+    
+</body>
+</html> 

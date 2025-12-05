@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let precioBase = +prompt("Iroduce un precio base en euros. \n(Ej.: 30€ )");
+        if (isFinite(precioBase)) {
+            let porcen = +prompt("Introduce un numero con decimales para representar procentaje. \n Ej.: 0.3 -> 30%")
+            if (isFinite(porcen)) {
+                precioBase = parseFloat(precioBase);
+                porcen = parseFloat(porcen);
+
+                let precioFinal = (precioBase - (precioBase * porcen)).toFixed(2);
+                alert(`El precio final es de ${precioFinal} €`)
+            }
+            else {
+                alert("El procentaje es infinito")
+            }
+        }
+        else {
+            alert("Es infinito")
+        }
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 10 </title>
+</head>
+
+<body>
+    <!---(LocalStorage) Modifica el ejercicio anterior para emplear LocalStorage para
+    almacenar los datos de nombre y edad en la página inicial que ahora se llamará
+    crear_ejercicio10.html. En este caso no expiran tal y como hemos estudiado. La
+    página para consultar y borrar ahora se llamará leer_ejercicio10.html. El botón
+    borrar tendrá el texto “Borrar datos” y elimina las claves con removeItem para mayor
+    seguridad.-->
+    <h1>Introduce tus datos</h1>
+    <form method="post" action="Unidad3-ejer10_leer.html">
+        <label for="nombre">Nombre: </label>
+        <br>
+        <input type="text" name="nombre" id="nombre">
+        <br><br>
+        <label for="edad">Edad: </label>
+        <br>
+        <input type="number" name="edad" id="edad">
+        <br><br>
+        <input type="submit" value="Guardar y continuar" onclick="funcionEnviar()">
+    </form>
+    <script>
+        function funcionEnviar() {
+            event.preventDefault(); // detiene el envío del form
+
+            // recojemos los vaores del form
+            let nombre = document.getElementById("nombre").value;
+            let edad = document.getElementById("edad").value;
+            if (!nombre || !edad) {
+                alert("Por favor, rellene todos los campos.")
+            }
+            else {
+                localStorage.setItem('nombre', nombre);
+                localStorage.setItem('edad', edad);
+                // redirigimos a la otra pagina
+                window.location.href = "Unidad3-ejer10_leer.html";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

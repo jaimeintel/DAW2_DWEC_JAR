@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación de Clases y Display con Botones</title>
+    <style>
+        .resaltado {
+            background-color: #ffeb3b; /* Amarillo vibrante */
+            color: #333;
+            font-weight: bold;
+            padding: 8px;
+            border: 2px solid #fdd835;
+            border-radius: 5px;
+        }
+
+        .contenedor-ocultable {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
+
+        .oculto {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejemplo de Eventos y Clases</h1>
+
+    <p id="parrafo1">Haz clic en el primer botón para aplicar o quitar el resaltado a este texto.</p>
+    <p id="parrafo2" class="contenedor-ocultable">Este texto está dentro de un contenedor. El segundo botón lo ocultará y lo mostrará.</p>
+
+    <button id="btnResaltar">Alternar Resaltado</button>
+    <button id="btnOcultar">Alternar Visibilidad</button>
+
+    <script>
+        // Esperamos a que todo el HTML esté cargado antes de acceder a los elementos
+        window.onload = function() {
+            
+            // 1. Obtener elementos
+            const btnResaltar = document.getElementById("btnResaltar");
+            const btnOcultar = document.getElementById("btnOcultar");
+            const parrafoResaltable = document.getElementById("parrafo1");
+            const parrafoOcultable = document.getElementById("parrafo2");
+
+            // --- Handler 1: Alternar la clase ---
+            // Cuando se haga click en 'btnResaltar'
+            btnResaltar.addEventListener("click", function() {
+                
+                // .classList.toggle() añade la clase si no existe, y la quita si ya existe.
+                parrafoResaltable.classList.add("resaltado");
+
+                // Opcional: Cambiar el texto del botón
+                if (parrafoResaltable.classList.contains("resaltado")) {
+                    btnResaltar.textContent = "Quitar Resaltado";
+                } else {
+                    btnResaltar.textContent = "Alternar Resaltado";
+                }
+            });
+
+            // --- Handler 2: Alternar la propiedad display ---
+            // Cuando se haga click en 'btnOcultar'
+            btnOcultar.addEventListener("click", function() {
+                
+                // Comprobamos el estado actual
+                if (parrafoOcultable.style.display === "none") {
+                    // Si está oculto, lo mostramos
+                    parrafoOcultable.style.display = "block";
+                    btnOcultar.textContent = "Ocultar Contenedor";
+                } else {
+                    // Si está visible (o no tiene estilo), lo ocultamos
+                    parrafoOcultable.style.display = "none";
+                    btnOcultar.textContent = "Mostrar Contenedor";
+                }
+                
+                // Alternativa más moderna (usando clases CSS):
+                // parrafoOcultable.classList.toggle("oculto"); 
+            });
+        };
+    </script>
+</body>
+</html>
